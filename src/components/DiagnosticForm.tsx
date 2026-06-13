@@ -22,7 +22,7 @@ const deviceTypes = [
 export function DiagnosticForm() {
   const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const data = {
@@ -39,12 +39,12 @@ export function DiagnosticForm() {
     }
     setSubmitting(true);
 
-    // Fallback: open user's email client with the diagnostic message.
-    const subject = `Demande de diagnostic — ${parsed.data.deviceType}`;
-    const body = [
+    const message = [
+      "Bonjour POP'FIX, je souhaite demander un diagnostic.",
+      "",
       `Nom : ${parsed.data.name}`,
       `Téléphone : ${parsed.data.phone}`,
-      `Type d'appareil : ${parsed.data.deviceType}`,
+      `Appareil : ${parsed.data.deviceType}`,
       parsed.data.brandModel ? `Marque / modèle : ${parsed.data.brandModel}` : null,
       "",
       "Problème rencontré :",
@@ -52,14 +52,16 @@ export function DiagnosticForm() {
     ]
       .filter(Boolean)
       .join("\n");
-    const mailto = `mailto:contact@popfix.example?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
 
-    setTimeout(() => {
-      toast.success("Diagnostic envoyé — on vous recontacte rapidement.");
+    try {
+      await navigator.clipboard.writeText(message);
+      toast.success("Votre demande a été copiée. Collez-la dans le message Instagram.");
+      window.open(POPFIX.instagram, "_blank", "noopener,noreferrer");
+    } catch {
+      toast.info("Contactez POP'FIX par téléphone ou Instagram pour transmettre votre demande.");
+    } finally {
       setSubmitting(false);
-      (e.target as HTMLFormElement).reset();
-    }, 400);
+    }
   }
 
   const inputCls =
@@ -69,15 +71,31 @@ export function DiagnosticForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid sm:grid-cols-2 gap-4">
         <input name="name" placeholder="Votre nom *" className={inputCls} required maxLength={80} />
-        <input name="phone" placeholder="Téléphone *" type="tel" className={inputCls} required maxLength={30} />
+        <input
+          name="phone"
+          placeholder="Téléphone *"
+          type="tel"
+          className={inputCls}
+          required
+          maxLength={30}
+        />
       </div>
       <select name="deviceType" className={`${inputCls} appearance-none`} required defaultValue="">
-        <option value="" disabled>Type d'appareil *</option>
+        <option value="" disabled>
+          Type d'appareil *
+        </option>
         {deviceTypes.map((d) => (
-          <option key={d} value={d}>{d}</option>
+          <option key={d} value={d}>
+            {d}
+          </option>
         ))}
       </select>
-      <input name="brandModel" placeholder="Marque et modèle (ex : iPhone 13, PS5, Switch OLED)" className={inputCls} maxLength={120} />
+      <input
+        name="brandModel"
+        placeholder="Marque et modèle (ex : iPhone 13, PS5, Switch OLED)"
+        className={inputCls}
+        maxLength={120}
+      />
       <textarea
         name="problem"
         rows={5}
@@ -91,13 +109,14 @@ export function DiagnosticForm() {
         disabled={submitting}
         className="w-full bg-pop-red text-white py-4 font-display font-bold uppercase tracking-widest text-sm hover:bg-pop-red-deep transition-colors disabled:opacity-60"
       >
-        {submitting ? "Envoi…" : "Lancer le diagnostic"}
+        {submitting ? "Préparation…" : "Préparer ma demande via Instagram"}
       </button>
-      <p className="text-[10px] uppercase tracking-widest font-mono text-zinc-500 text-center">
-        Ou appelez directement —{" "}
+      <p className="text-xs text-zinc-500 text-center leading-relaxed">
+        Le formulaire prépare votre message et ouvre Instagram. Vous pouvez aussi appeler le{" "}
         <a href={POPFIX.phoneHref} className="text-pop-red hover:text-pop-off">
           {POPFIX.phone}
         </a>
+        .
       </p>
     </form>
   );

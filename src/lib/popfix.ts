@@ -23,7 +23,7 @@ export const POPFIX = {
 
 export const NAV_LINKS = [
   { to: "/reparations", label: "Réparations" },
-  { to: "/gaming", label: "Gaming" },
+  { to: "/gaming", label: "Consoles & manettes" },
   { to: "/accessoires", label: "Accessoires" },
   { to: "/conseils", label: "Conseils" },
   { to: "/a-propos", label: "À propos" },

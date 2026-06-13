@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Wrench, Heart, Zap } from "lucide-react";
+import { MapPin, Wrench, Heart, MessageCircle } from "lucide-react";
 import workshopImg from "@/assets/workshop.jpg";
 import mascot from "@/assets/mascot-popfix.png";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -7,10 +7,17 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
     meta: [
-      { title: "À propos — POP'FIX, l'atelier rock'n'tech de Saint-François" },
-      { name: "description", content: "Découvrez POP'FIX : un atelier de réparation électronique passionné, local et accessible, ancré à Saint-François en Guadeloupe." },
+      { title: "À propos — POP'FIX, atelier de réparation à Saint-François" },
+      {
+        name: "description",
+        content:
+          "Découvrez POP'FIX : un atelier de réparation électronique passionné, local et accessible, ancré à Saint-François en Guadeloupe.",
+      },
       { property: "og:title", content: "À propos de POP'FIX" },
-      { property: "og:description", content: "L'histoire et la mission de POP'FIX, atelier de réparation à Saint-François." },
+      {
+        property: "og:description",
+        content: "L'histoire et la mission de POP'FIX, atelier de réparation à Saint-François.",
+      },
       { property: "og:url", content: "/a-propos" },
     ],
     links: [{ rel: "canonical", href: "/a-propos" }],
@@ -19,10 +26,26 @@ export const Route = createFileRoute("/a-propos")({
 });
 
 const values = [
-  { icon: Wrench, title: "Compétence", body: "L'électronique, c'est notre métier. Diagnostic propre, intervention soignée, pas de bricolage." },
-  { icon: Heart, title: "Honnêteté", body: "On vous dit ce qu'on peut faire, ce qu'on ne peut pas faire, et quand un remplacement vaut mieux qu'une réparation." },
-  { icon: MapPin, title: "Local", body: "Ancrés à Saint-François. Pas besoin de descendre à Jarry pour faire réparer votre téléphone." },
-  { icon: Zap, title: "Énergie", body: "Atelier rock, gaming, pop culture — on bosse sérieusement sans se prendre au sérieux." },
+  {
+    icon: Wrench,
+    title: "Savoir-faire",
+    body: "Chaque appareil est examiné avec méthode afin d'identifier précisément l'origine de la panne.",
+  },
+  {
+    icon: Heart,
+    title: "Honnêteté",
+    body: "On vous dit ce qu'on peut faire, ce qu'on ne peut pas faire, et quand un remplacement vaut mieux qu'une réparation.",
+  },
+  {
+    icon: MapPin,
+    title: "Local",
+    body: "Ancrés à Saint-François. Pas besoin de descendre à Jarry pour faire réparer votre téléphone.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Clarté",
+    body: "La panne et la solution proposée sont expliquées simplement avant toute intervention.",
+  },
 ] as const;
 
 function AboutPage() {
@@ -34,12 +57,19 @@ function AboutPage() {
             <SectionHeading
               eyebrow="À propos"
               title="Un atelier"
-              accent="local, technique et un peu rock."
-              description="POP'FIX, c'est un atelier de réparation électronique posé à Saint-François. Une passion pour le matériel, un respect pour les gens qui nous le confient — et une obsession pour le travail bien fait."
+              accent="local et spécialisé."
+              description="POP'FIX est un atelier de réparation électronique installé à Saint-François. Sa priorité : examiner chaque appareil avec soin, expliquer clairement le problème et proposer une solution adaptée."
             />
           </div>
           <div className="relative">
-            <img src={workshopImg} alt="Atelier POP'FIX" width={1600} height={1000} loading="lazy" className="w-full aspect-[4/3] object-cover ring-1 ring-white/10" />
+            <img
+              src={workshopImg}
+              alt="Atelier POP'FIX"
+              width={1600}
+              height={1000}
+              loading="lazy"
+              className="w-full aspect-[4/3] object-cover ring-1 ring-white/10"
+            />
             <div className="absolute -bottom-5 -left-5 bg-pop-red text-white px-5 py-3 -rotate-2 font-display font-black uppercase tracking-tight text-sm">
               Saint-François · Guadeloupe
             </div>
@@ -61,15 +91,27 @@ function AboutPage() {
 
       <section className="bg-pop-zinc border-y border-white/5 py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 grid md:grid-cols-[auto_1fr] gap-10 items-center">
-          <img src={mascot} alt="Mascotte POP'FIX" width={260} height={260} loading="lazy" className="size-48 md:size-60 object-contain mx-auto md:mx-0" />
+          <img
+            src={mascot}
+            alt="Mascotte POP'FIX"
+            width={260}
+            height={260}
+            loading="lazy"
+            className="size-48 md:size-60 object-contain mx-auto md:mx-0"
+          />
           <div>
             <h2 className="font-display font-black uppercase text-3xl sm:text-5xl text-pop-off tracking-[-0.03em] leading-[0.95] text-balance">
               On diagnostique. On explique. <span className="text-pop-red">On répare.</span>
             </h2>
             <p className="mt-5 text-zinc-400 leading-relaxed">
-              Notre approche tient en trois étapes. On regarde l'appareil avant tout. On vous explique en français ce qu'on a trouvé. Et on ne touche à rien sans votre accord.
+              Notre approche tient en trois étapes. L'appareil est d'abord examiné, le problème vous
+              est expliqué clairement, puis l'intervention est réalisée uniquement avec votre
+              accord.
             </p>
-            <Link to="/contact" className="mt-7 inline-flex items-center gap-2 bg-pop-red text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-pop-red-deep">
+            <Link
+              to="/contact"
+              className="mt-7 inline-flex items-center gap-2 bg-pop-red text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-pop-red-deep"
+            >
               Venir nous rencontrer
             </Link>
           </div>

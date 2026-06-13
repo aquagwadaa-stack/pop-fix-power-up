@@ -28,17 +28,21 @@ function NotFoundComponent() {
         <h1 className="font-display font-black text-[8rem] sm:text-[12rem] leading-none tracking-[-0.05em]">
           4<span className="text-pop-red">0</span>4
         </h1>
-        <p className="mt-4 text-xl font-display font-bold uppercase">
-          Cette page est en panne.
-        </p>
+        <p className="mt-4 text-xl font-display font-bold uppercase">Cette page est en panne.</p>
         <p className="mt-2 text-zinc-400">
           Mais votre appareil n'a pas à l'être. On s'en occupe à Saint-François.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/" className="bg-pop-red px-6 py-3 text-sm font-bold uppercase tracking-widest text-white hover:bg-pop-red-deep">
+          <Link
+            to="/"
+            className="bg-pop-red px-6 py-3 text-sm font-bold uppercase tracking-widest text-white hover:bg-pop-red-deep"
+          >
             Retour à l'accueil
           </Link>
-          <Link to="/contact" className="border border-white/20 px-6 py-3 text-sm font-bold uppercase tracking-widest text-pop-off hover:bg-white/10">
+          <Link
+            to="/contact"
+            className="border border-white/20 px-6 py-3 text-sm font-bold uppercase tracking-widest text-pop-off hover:bg-white/10"
+          >
             Demander un diagnostic
           </Link>
         </div>
@@ -57,18 +61,26 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-pop-black px-4 text-pop-off">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-3xl font-black uppercase tracking-tight">Cette page n'a pas chargé</h1>
+        <h1 className="font-display text-3xl font-black uppercase tracking-tight">
+          Cette page n'a pas chargé
+        </h1>
         <p className="mt-2 text-sm text-zinc-400">
           Un grain de poussière dans les circuits. On peut réessayer ou rentrer à la base.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="bg-pop-red px-4 py-2 text-sm font-bold uppercase tracking-widest text-white"
           >
             Réessayer
           </button>
-          <a href="/" className="border border-white/20 px-4 py-2 text-sm font-bold uppercase tracking-widest text-pop-off">
+          <a
+            href="/"
+            className="border border-white/20 px-4 py-2 text-sm font-bold uppercase tracking-widest text-pop-off"
+          >
             Accueil
           </a>
         </div>
@@ -82,8 +94,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "POP'FIX — Réparation smartphone, console & manette à Saint-François" },
-      { name: "description", content: "Atelier POP'FIX à Saint-François (Guadeloupe) : réparation de smartphones, tablettes, consoles et manettes. Diagnostic avant intervention, 4,9/5 sur Google." },
+      { title: "POP'FIX — Réparation électronique à Saint-François" },
+      {
+        name: "description",
+        content:
+          "Atelier POP'FIX à Saint-François : smartphones, tablettes, ordinateurs, écrans, consoles et manettes.",
+      },
       { name: "author", content: "POP'FIX" },
       { name: "theme-color", content: "#0a0a0a" },
       { property: "og:site_name", content: "POP'FIX" },
@@ -107,7 +123,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "POP'FIX",
-          description: "Réparation de smartphones, tablettes, consoles et manettes à Saint-François, Guadeloupe.",
+          description:
+            "Réparation de smartphones, tablettes, ordinateurs, écrans, consoles et manettes à Saint-François, Guadeloupe.",
           telephone: POPFIX.phone,
           priceRange: "€€",
           address: {
@@ -128,12 +145,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "OpeningHoursSpecification",
               dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "09:30", closes: "17:00",
+              opens: "09:30",
+              closes: "17:00",
             },
             {
               "@type": "OpeningHoursSpecification",
               dayOfWeek: ["Saturday"],
-              opens: "09:30", closes: "14:00",
+              opens: "09:30",
+              closes: "14:00",
             },
           ],
         }),

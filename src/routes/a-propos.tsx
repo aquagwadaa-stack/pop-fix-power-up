@@ -39,7 +39,7 @@ const values = [
   {
     icon: MapPin,
     title: "Local",
-    body: "Ancrés à Saint-François. Pas besoin de descendre à Jarry pour faire réparer votre téléphone.",
+    body: "Un atelier installé à Saint-François, au plus près de ses clients.",
   },
   {
     icon: MessageCircle,
@@ -59,6 +59,7 @@ function AboutPage() {
               title="Un atelier"
               accent="local et spécialisé."
               description="POP'FIX est un atelier de réparation électronique installé à Saint-François. Sa priorité : examiner chaque appareil avec soin, expliquer clairement le problème et proposer une solution adaptée."
+              tone="light"
             />
           </div>
           <div className="relative">

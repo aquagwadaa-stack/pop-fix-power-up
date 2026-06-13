@@ -14,6 +14,8 @@ const schema = z.object({
 const deviceTypes = [
   "Smartphone",
   "Tablette",
+  "Ordinateur",
+  "Écran",
   "Console (PS5, PS4, Switch, Xbox…)",
   "Manette",
   "Accessoire / Autre",
@@ -92,7 +94,7 @@ export function DiagnosticForm() {
       </select>
       <input
         name="brandModel"
-        placeholder="Marque et modèle (ex : iPhone 13, PS5, Switch OLED)"
+        placeholder="Marque et modèle (ex : iPhone, Samsung, PC, PS5)"
         className={inputCls}
         maxLength={120}
       />

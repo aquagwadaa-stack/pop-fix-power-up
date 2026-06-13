@@ -32,9 +32,7 @@ export function SectionHeading({
         {title} {accent && <span className="text-pop-red">{accent}</span>}
       </h2>
       {description && (
-        <p className={`text-base sm:text-lg leading-relaxed text-pretty ${muted}`}>
-          {description}
-        </p>
+        <p className={`text-base sm:text-lg leading-relaxed text-pretty ${muted}`}>{description}</p>
       )}
     </div>
   );

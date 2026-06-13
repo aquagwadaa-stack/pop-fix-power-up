@@ -1,27 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Smartphone, Tablet, Gamepad2, Joystick, Headphones, ArrowRight } from "lucide-react";
-import smartphoneImg from "@/assets/repair-smartphone.jpg";
-import tabletImg from "@/assets/repair-tablet.jpg";
-import consoleImg from "@/assets/hero-controller.jpg";
-import controllerImg from "@/assets/repair-controller.jpg";
-import accessoriesImg from "@/assets/accessories.jpg";
+import {
+  ArrowRight,
+  Gamepad2,
+  Laptop,
+  Monitor,
+  ShoppingBag,
+  Smartphone,
+  Tablet,
+} from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
-import { MascotTip } from "@/components/MascotTip";
 
 export const Route = createFileRoute("/reparations")({
   head: () => ({
     meta: [
-      { title: "Réparations smartphone, tablette, console — POP'FIX Saint-François" },
+      { title: "Réparations et services — POP'FIX Saint-François" },
       {
         name: "description",
         content:
-          "Réparation d'écran, batterie, joystick, port de charge à Saint-François. Diagnostic avant intervention sur smartphone, tablette, console et manette.",
+          "Smartphones, tablettes, ordinateurs, écrans, consoles et manettes pris en charge par POP'FIX à Saint-François.",
       },
       { property: "og:title", content: "Réparations — POP'FIX Saint-François" },
       {
         property: "og:description",
-        content:
-          "Diagnostic et réparation de smartphones, tablettes, consoles et manettes à Saint-François, Guadeloupe.",
+        content: "Découvrez les appareils et les problèmes pris en charge par l'atelier POP'FIX.",
       },
       { property: "og:url", content: "/reparations" },
     ],
@@ -32,68 +33,57 @@ export const Route = createFileRoute("/reparations")({
 
 const categories = [
   {
+    id: "smartphones",
     icon: Smartphone,
     title: "Smartphones",
-    img: smartphoneImg,
-    items: [
-      "Écran cassé / fissuré",
-      "Batterie fatiguée",
-      "Port de charge",
-      "Bouton volume / power",
-      "Haut-parleur / micro",
-      "Caméra arrière / avant",
-    ],
+    description: "Les pannes courantes sur les téléphones utilisés au quotidien.",
+    items: ["Écran ou vitre", "Batterie", "Port de charge", "Boutons", "Micro et haut-parleur"],
   },
   {
+    id: "tablettes",
     icon: Tablet,
     title: "Tablettes",
-    img: tabletImg,
-    items: [
-      "Vitre tactile",
-      "Connecteur de charge",
-      "Batterie",
-      "Wi-Fi / Bluetooth",
-      "Bouton home",
-      "Restauration logicielle",
-    ],
+    description: "Diagnostic et intervention selon le modèle et la panne constatée.",
+    items: ["Vitre tactile", "Batterie", "Connecteur de charge", "Boutons", "Problèmes logiciels"],
   },
   {
+    id: "ordinateurs",
+    icon: Laptop,
+    title: "Ordinateurs",
+    description: "Recherche de panne, entretien et problèmes matériels courants.",
+    items: ["Démarrage et lenteurs", "Nettoyage", "Ventilation", "Alimentation", "Connectique"],
+  },
+  {
+    id: "ecrans",
+    icon: Monitor,
+    title: "Écrans",
+    description: "Examen des problèmes d'affichage, de connexion ou d'alimentation.",
+    items: ["Absence d'image", "Connectique", "Alimentation", "Faux contacts", "Diagnostic"],
+  },
+  {
+    id: "consoles-manettes",
     icon: Gamepad2,
-    title: "Consoles",
-    img: consoleImg,
-    items: [
-      "Nettoyage anti-poussière",
-      "Surchauffe / ventilation",
-      "Lecteur disque",
-      "Port HDMI",
-      "Alimentation",
-      "Disque dur / stockage",
-    ],
-  },
-  {
-    icon: Joystick,
-    title: "Manettes",
-    img: controllerImg,
+    title: "Consoles & manettes",
+    description: "Entretien et réparation des commandes et composants les plus sollicités.",
     items: [
       "Drift de joystick",
-      "Remplacement de sticks",
-      "Boutons capricieux",
-      "Gâchettes L1/L2/R1/R2",
-      "Vibration",
-      "Connectique USB",
+      "Boutons et gâchettes",
+      "Nettoyage",
+      "Surchauffe",
+      "Ports HDMI et USB",
     ],
   },
   {
-    icon: Headphones,
-    title: "Accessoires & High-tech",
-    img: accessoriesImg,
+    id: "accessoires",
+    icon: ShoppingBag,
+    title: "Accessoires",
+    description: "Une sélection de produits utiles, disponible selon le stock en boutique.",
     items: [
-      "Casques audio",
-      "Câbles & adaptateurs",
-      "Stations de charge",
-      "Montres connectées",
-      "Enceintes Bluetooth",
-      "Nettoyage & entretien",
+      "Câbles",
+      "Protections d'écran",
+      "Casques et écouteurs",
+      "Batteries externes",
+      "Adaptateurs",
     ],
   },
 ] as const;
@@ -101,72 +91,63 @@ const categories = [
 function ReparationsPage() {
   return (
     <>
-      <section className="bg-pop-black border-b border-white/5 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <section className="bg-pop-black text-pop-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-32 pb-16 sm:pt-40 sm:pb-20">
           <SectionHeading
-            eyebrow="Réparations"
-            title="Tout ce qu'on"
-            accent="remet en route."
-            description="Smartphones, tablettes, consoles, manettes et accessoires. Chaque appareil passe par un diagnostic avant la moindre intervention."
+            eyebrow="Réparations et services"
+            title="Les appareils pris en charge"
+            description="La faisabilité dépend du modèle, de la panne constatée et de la disponibilité des pièces."
+            tone="light"
           />
         </div>
       </section>
 
-      <section className="bg-pop-black pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-px bg-white/5">
-          {categories.map((cat, i) => (
+      <section className="bg-pop-cream py-14 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 grid md:grid-cols-2 gap-4">
+          {categories.map((category) => (
             <article
-              key={cat.title}
-              className={`bg-pop-black grid md:grid-cols-2 gap-8 lg:gap-14 p-8 lg:p-14 items-center ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
+              id={category.id}
+              key={category.id}
+              className="scroll-mt-24 rounded-2xl border border-black/10 bg-white p-7 sm:p-9"
             >
-              <div>
-                <div className="aspect-[4/3] overflow-hidden ring-1 ring-white/10">
-                  <img
-                    src={cat.img}
-                    alt={`Réparation ${cat.title}`}
-                    width={1200}
-                    height={900}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <div className="min-w-0">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-pop-red font-bold">
-                  Service {String(i + 1).padStart(2, "0")}
-                </span>
-                <h2 className="mt-3 font-display font-black uppercase text-4xl lg:text-5xl text-pop-off tracking-[-0.03em] leading-none flex items-center gap-4">
-                  <cat.icon className="size-9 text-pop-red shrink-0" />
-                  <span className="truncate">{cat.title}</span>
-                </h2>
-                <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {cat.items.map((it) => (
-                    <li
-                      key={it}
-                      className="flex items-start gap-3 text-zinc-300 text-sm leading-snug"
-                    >
-                      <span className="size-1.5 bg-pop-red mt-2 shrink-0" /> {it}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/contact"
-                  className="mt-8 inline-flex items-center gap-3 bg-pop-red text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-pop-red-deep"
-                >
-                  Demander un diagnostic <ArrowRight className="size-4" />
-                </Link>
-              </div>
+              <category.icon className="size-7 text-pop-red" strokeWidth={1.5} />
+              <h2 className="mt-6 font-display text-2xl sm:text-3xl font-semibold text-pop-black">
+                {category.title}
+              </h2>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-pop-warm-2">
+                {category.description}
+              </p>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {category.items.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-full border border-black/10 bg-pop-paper px-3 py-2 text-sm text-pop-warm-1"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
       </section>
 
-      <MascotTip
-        title="On ne touche jamais à un appareil sans vous prévenir."
-        body="Chez POP'FIX, le diagnostic est une étape à part entière. Vous savez ce qui ne va pas et quelle intervention est proposée avant toute réparation."
-        ctaLabel="Demander un diagnostic"
-        ctaTo="/contact"
-      />
+      <section className="bg-pop-paper py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 text-center">
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold text-pop-black">
+            Votre panne n'apparaît pas dans la liste ?
+          </h2>
+          <p className="mt-4 text-pop-warm-2">
+            Indiquez le modèle de votre appareil et décrivez le problème rencontré.
+          </p>
+          <Link
+            to="/contact"
+            className="mt-7 inline-flex items-center gap-2 rounded-full bg-pop-red px-6 py-3 text-sm font-semibold text-white hover:bg-pop-red-deep"
+          >
+            Demander un diagnostic <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </section>
     </>
   );
 }

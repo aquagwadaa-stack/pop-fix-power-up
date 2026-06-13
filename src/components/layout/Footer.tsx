@@ -10,8 +10,8 @@ export function Footer() {
         <div className="lg:col-span-5">
           <PopFixLogo className="text-3xl" solid={false} />
           <p className="mt-5 text-white/65 max-w-sm text-sm leading-relaxed">
-            Atelier de réparation électronique à Saint-François. Smartphones, tablettes, consoles
-            et manettes — diagnostic, réparation et conseils.
+            Atelier de réparation électronique à Saint-François. Smartphones, tablettes,
+            ordinateurs, écrans, consoles et manettes.
           </p>
           <a
             href={POPFIX.instagram}

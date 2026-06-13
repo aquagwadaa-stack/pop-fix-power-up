@@ -97,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap",
       },
     ],
     scripts: [
@@ -164,14 +164,14 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-pop-black text-pop-off">
+      <div className="min-h-screen bg-pop-cream text-pop-black">
         <Header />
-        <main className="pt-16">
+        <main>
           <Outlet />
         </main>
         <Footer />
         <MobileBar />
-        <Toaster theme="dark" position="top-center" />
+        <Toaster position="top-center" />
       </div>
     </QueryClientProvider>
   );

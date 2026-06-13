@@ -4,12 +4,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* POP'FIX — premium local repair design system */
+/* POP'FIX — atelier local, design chaleureux noir / blanc cassé / rouge */
 
 @theme inline {
-  --font-display: "Inter Tight", system-ui, sans-serif;
-  --font-sans: "Inter Tight", system-ui, sans-serif;
-  --font-mono: "Space Grotesk", ui-monospace, monospace;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -34,48 +34,58 @@
   --color-pop-red: var(--pop-red);
   --color-pop-red-deep: var(--pop-red-deep);
   --color-pop-black: var(--pop-black);
-  --color-pop-zinc: var(--pop-zinc);
-  --color-pop-zinc-2: var(--pop-zinc-2);
-  --color-pop-off: var(--pop-off);
-  --color-pop-cyan: var(--pop-cyan);
-  --color-pop-gold: var(--pop-gold);
+  --color-pop-ink: var(--pop-ink);
+  --color-pop-cream: var(--pop-cream);
+  --color-pop-paper: var(--pop-paper);
+  --color-pop-warm-1: var(--pop-warm-1);
+  --color-pop-warm-2: var(--pop-warm-2);
+  --color-pop-warm-3: var(--pop-warm-3);
+  --color-pop-off: var(--pop-cream);
+  --color-pop-zinc: var(--pop-ink);
+  --color-pop-zinc-2: var(--pop-warm-3);
+  --color-pop-cyan: var(--pop-red);
+  --color-pop-gold: var(--pop-red);
 
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
 }
 
 :root {
-  --background: oklch(0.13 0.005 270);
-  --foreground: oklch(0.96 0.005 270);
+  /* Brand */
+  --pop-black: #0b0b0b;
+  --pop-ink: #161513;
+  --pop-cream: #f5f2ec;
+  --pop-paper: #ebe6dc;
+  --pop-red: oklch(0.6 0.22 26);
+  --pop-red-deep: oklch(0.5 0.21 25);
 
-  --pop-red: oklch(0.62 0.23 25);
-  --pop-red-deep: oklch(0.5 0.22 24);
-  --pop-black: oklch(0.1 0.005 270);
-  --pop-zinc: oklch(0.18 0.005 270);
-  --pop-zinc-2: oklch(0.26 0.006 270);
-  --pop-off: oklch(0.97 0.005 90);
-  --pop-cyan: oklch(0.85 0.16 200);
-  --pop-gold: oklch(0.82 0.14 85);
+  /* Warm greys for body text */
+  --pop-warm-1: #4a4641; /* primary text on cream */
+  --pop-warm-2: #6b655d; /* secondary */
+  --pop-warm-3: #a09a91; /* tertiary / hairlines on cream */
 
-  --card: var(--pop-zinc);
-  --card-foreground: var(--foreground);
-  --popover: var(--pop-zinc);
-  --popover-foreground: var(--foreground);
+  --background: var(--pop-cream);
+  --foreground: var(--pop-black);
+
+  --card: #ffffff;
+  --card-foreground: var(--pop-black);
+  --popover: #ffffff;
+  --popover-foreground: var(--pop-black);
   --primary: var(--pop-red);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: var(--pop-zinc-2);
-  --secondary-foreground: var(--foreground);
-  --muted: var(--pop-zinc-2);
-  --muted-foreground: oklch(0.65 0.01 270);
-  --accent: var(--pop-cyan);
-  --accent-foreground: var(--pop-black);
+  --primary-foreground: #ffffff;
+  --secondary: var(--pop-paper);
+  --secondary-foreground: var(--pop-black);
+  --muted: var(--pop-paper);
+  --muted-foreground: var(--pop-warm-2);
+  --accent: var(--pop-red);
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.55 0.22 28);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
+  --destructive-foreground: #ffffff;
+  --border: rgba(11, 11, 11, 0.1);
+  --input: rgba(11, 11, 11, 0.12);
   --ring: var(--pop-red);
-  --radius: 0.25rem;
+  --radius: 0.5rem;
 }
 
 @layer base {
@@ -86,98 +96,54 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: var(--color-pop-black);
-    color: var(--color-foreground);
+    background-color: var(--pop-cream);
+    color: var(--pop-black);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
   ::selection {
-    background: var(--color-pop-red);
+    background: var(--pop-red);
     color: white;
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .text-pretty {
-    text-wrap: pretty;
-  }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
 
-  .scanlines {
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 3px,
-      rgba(255, 255, 255, 0.025) 3px,
-      rgba(255, 255, 255, 0.025) 4px
-    );
-  }
-  .grain {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 3px 3px;
-  }
-  .clip-arrow {
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+  .paper-grain {
+    background-image:
+      radial-gradient(rgba(11, 11, 11, 0.035) 1px, transparent 1px),
+      radial-gradient(rgba(11, 11, 11, 0.025) 1px, transparent 1px);
+    background-size: 5px 5px, 13px 13px;
+    background-position: 0 0, 2px 3px;
   }
 }
+
+/* Subtle reveal animation (respects prefers-reduced-motion) */
+@keyframes pop-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: pop-fade-up 0.7s ease-out both; }
+.fade-up-2 { animation: pop-fade-up 0.7s 0.08s ease-out both; }
+.fade-up-3 { animation: pop-fade-up 0.7s 0.16s ease-out both; }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
-.animate-marquee {
-  animation: marquee 28s linear infinite;
-}
-
-@keyframes glitch {
-  0%,
-  100% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-1px, 1px);
-  }
-  40% {
-    transform: translate(-1px, -1px);
-  }
-  60% {
-    transform: translate(1px, 1px);
-  }
-  80% {
-    transform: translate(1px, -1px);
-  }
-}
-.hover-glitch:hover {
-  animation: glitch 0.25s infinite;
-}
-
-@keyframes pulse-dot {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-.animate-pulse-dot {
-  animation: pulse-dot 1.4s ease-in-out infinite;
-}
+.animate-marquee { animation: marquee 40s linear infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee,
-  .hover-glitch:hover,
-  .animate-pulse-dot {
+  .fade-up, .fade-up-2, .fade-up-3, .animate-marquee {
     animation: none !important;
   }
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 }

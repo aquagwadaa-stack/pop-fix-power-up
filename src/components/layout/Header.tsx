@@ -9,7 +9,9 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
@@ -35,7 +37,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link
             to="/contact"
-            className="hidden sm:inline-flex items-center bg-pop-red text-white text-xs font-bold uppercase tracking-widest px-4 py-2.5 hover:bg-pop-red-deep transition-colors clip-arrow pr-6"
+            className="hidden sm:inline-flex items-center bg-pop-red text-white text-xs font-bold px-4 py-2.5 hover:bg-pop-red-deep transition-colors"
           >
             Demander un diagnostic
           </Link>
@@ -52,14 +54,14 @@ export function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden fixed inset-x-0 top-16 bottom-0 bg-pop-black border-t border-white/5 overflow-y-auto">
+        <div className="lg:hidden absolute inset-x-0 top-full min-h-[calc(100vh-4rem)] bg-pop-black border-t border-white/5 overflow-y-auto">
           <nav className="flex flex-col">
             {NAV_LINKS.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="px-6 py-5 text-2xl font-display font-bold uppercase tracking-tight border-b border-white/5 text-pop-off hover:text-pop-red"
+                className="px-6 py-5 text-2xl font-display font-bold tracking-tight border-b border-white/5 text-pop-off hover:text-pop-red"
               >
                 {l.label}
               </Link>

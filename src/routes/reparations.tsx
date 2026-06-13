@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Smartphone, Tablet, Gamepad2, Joystick, Headphones, ArrowRight } from "lucide-react";
 import smartphoneImg from "@/assets/repair-smartphone.jpg";
 import tabletImg from "@/assets/repair-tablet.jpg";
-import consoleImg from "@/assets/repair-console.jpg";
+import consoleImg from "@/assets/hero-controller.jpg";
 import controllerImg from "@/assets/repair-controller.jpg";
 import accessoriesImg from "@/assets/accessories.jpg";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -12,9 +12,17 @@ export const Route = createFileRoute("/reparations")({
   head: () => ({
     meta: [
       { title: "Réparations smartphone, tablette, console — POP'FIX Saint-François" },
-      { name: "description", content: "Réparation d'écran, batterie, joystick, port de charge à Saint-François. Diagnostic avant intervention sur smartphone, tablette, console et manette." },
+      {
+        name: "description",
+        content:
+          "Réparation d'écran, batterie, joystick, port de charge à Saint-François. Diagnostic avant intervention sur smartphone, tablette, console et manette.",
+      },
       { property: "og:title", content: "Réparations — POP'FIX Saint-François" },
-      { property: "og:description", content: "Diagnostic et réparation de smartphones, tablettes, consoles et manettes à Saint-François, Guadeloupe." },
+      {
+        property: "og:description",
+        content:
+          "Diagnostic et réparation de smartphones, tablettes, consoles et manettes à Saint-François, Guadeloupe.",
+      },
       { property: "og:url", content: "/reparations" },
     ],
     links: [{ rel: "canonical", href: "/reparations" }],
@@ -27,31 +35,66 @@ const categories = [
     icon: Smartphone,
     title: "Smartphones",
     img: smartphoneImg,
-    items: ["Écran cassé / fissuré", "Batterie fatiguée", "Port de charge", "Bouton volume / power", "Haut-parleur / micro", "Caméra arrière / avant"],
+    items: [
+      "Écran cassé / fissuré",
+      "Batterie fatiguée",
+      "Port de charge",
+      "Bouton volume / power",
+      "Haut-parleur / micro",
+      "Caméra arrière / avant",
+    ],
   },
   {
     icon: Tablet,
     title: "Tablettes",
     img: tabletImg,
-    items: ["Vitre tactile", "Connecteur de charge", "Batterie", "Wi-Fi / Bluetooth", "Bouton home", "Restauration logicielle"],
+    items: [
+      "Vitre tactile",
+      "Connecteur de charge",
+      "Batterie",
+      "Wi-Fi / Bluetooth",
+      "Bouton home",
+      "Restauration logicielle",
+    ],
   },
   {
     icon: Gamepad2,
     title: "Consoles",
     img: consoleImg,
-    items: ["Nettoyage anti-poussière", "Surchauffe / ventilation", "Lecteur disque", "Port HDMI", "Alimentation", "Disque dur / stockage"],
+    items: [
+      "Nettoyage anti-poussière",
+      "Surchauffe / ventilation",
+      "Lecteur disque",
+      "Port HDMI",
+      "Alimentation",
+      "Disque dur / stockage",
+    ],
   },
   {
     icon: Joystick,
     title: "Manettes",
     img: controllerImg,
-    items: ["Drift de joystick", "Remplacement de sticks", "Boutons capricieux", "Gâchettes L1/L2/R1/R2", "Vibration", "Connectique USB"],
+    items: [
+      "Drift de joystick",
+      "Remplacement de sticks",
+      "Boutons capricieux",
+      "Gâchettes L1/L2/R1/R2",
+      "Vibration",
+      "Connectique USB",
+    ],
   },
   {
     icon: Headphones,
     title: "Accessoires & High-tech",
     img: accessoriesImg,
-    items: ["Casques audio", "Câbles & adaptateurs", "Stations de charge", "Montres connectées", "Enceintes Bluetooth", "Nettoyage & entretien"],
+    items: [
+      "Casques audio",
+      "Câbles & adaptateurs",
+      "Stations de charge",
+      "Montres connectées",
+      "Enceintes Bluetooth",
+      "Nettoyage & entretien",
+    ],
   },
 ] as const;
 
@@ -78,12 +121,19 @@ function ReparationsPage() {
             >
               <div>
                 <div className="aspect-[4/3] overflow-hidden ring-1 ring-white/10">
-                  <img src={cat.img} alt={`Réparation ${cat.title}`} width={1200} height={900} loading="lazy" className="w-full h-full object-cover" />
+                  <img
+                    src={cat.img}
+                    alt={`Réparation ${cat.title}`}
+                    width={1200}
+                    height={900}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <div className="min-w-0">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-pop-red font-bold">
-                  [ Catégorie {String(i + 1).padStart(2, "0")} ]
+                  Service {String(i + 1).padStart(2, "0")}
                 </span>
                 <h2 className="mt-3 font-display font-black uppercase text-4xl lg:text-5xl text-pop-off tracking-[-0.03em] leading-none flex items-center gap-4">
                   <cat.icon className="size-9 text-pop-red shrink-0" />
@@ -91,12 +141,18 @@ function ReparationsPage() {
                 </h2>
                 <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {cat.items.map((it) => (
-                    <li key={it} className="flex items-start gap-3 text-zinc-300 text-sm leading-snug">
+                    <li
+                      key={it}
+                      className="flex items-start gap-3 text-zinc-300 text-sm leading-snug"
+                    >
                       <span className="size-1.5 bg-pop-red mt-2 shrink-0" /> {it}
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact" className="mt-8 inline-flex items-center gap-3 bg-pop-red text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-pop-red-deep">
+                <Link
+                  to="/contact"
+                  className="mt-8 inline-flex items-center gap-3 bg-pop-red text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-pop-red-deep"
+                >
                   Demander un diagnostic <ArrowRight className="size-4" />
                 </Link>
               </div>
@@ -107,8 +163,8 @@ function ReparationsPage() {
 
       <MascotTip
         title="On ne touche jamais à un appareil sans vous prévenir."
-        body="Chez POP'FIX, le diagnostic est une étape à part entière. Vous savez ce qui ne va pas, comment on compte le réparer et pourquoi — avant qu'on sorte le tournevis."
-        ctaLabel="Lancer mon diagnostic"
+        body="Chez POP'FIX, le diagnostic est une étape à part entière. Vous savez ce qui ne va pas et quelle intervention est proposée avant toute réparation."
+        ctaLabel="Demander un diagnostic"
         ctaTo="/contact"
       />
     </>

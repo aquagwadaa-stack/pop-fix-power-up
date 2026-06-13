@@ -1,27 +1,29 @@
-import { Star } from "lucide-react";
+import { MapPin, ShieldCheck, Star } from "lucide-react";
 import { POPFIX } from "@/lib/popfix";
-
-const items = [
-  `${POPFIX.rating.score} sur Google`,
-  `${POPFIX.rating.count} avis clients`,
-  "Atelier à Saint-François",
-  "Diagnostic avant intervention",
-  "Smartphones · Tablettes · Consoles · Manettes",
-];
 
 export function TrustBar() {
   return (
-    <div className="bg-pop-red overflow-hidden border-y border-pop-black/40">
-      <div className="flex whitespace-nowrap animate-marquee gap-12 py-3">
-        {[...items, ...items, ...items].map((t, i) => (
-          <span
-            key={i}
-            className="flex items-center gap-3 font-display font-bold uppercase tracking-tight text-white text-sm"
-          >
-            <Star className="size-3.5 fill-white" /> {t}
-            <span className="size-1.5 bg-white/60 rounded-full ml-6" />
+    <div className="bg-pop-zinc border-y border-white/5">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5 grid sm:grid-cols-3 gap-4 sm:gap-8">
+        <div className="flex items-center gap-3 text-sm text-zinc-300">
+          <Star className="size-5 text-pop-red fill-pop-red shrink-0" />
+          <span>
+            <strong className="text-pop-off">{POPFIX.rating.score}</strong> sur Google,{" "}
+            {POPFIX.rating.count} avis
           </span>
-        ))}
+        </div>
+        <div className="flex items-center gap-3 text-sm text-zinc-300">
+          <MapPin className="size-5 text-pop-red shrink-0" />
+          <span>
+            Atelier situé à <strong className="text-pop-off">Saint-François</strong>
+          </span>
+        </div>
+        <div className="flex items-center gap-3 text-sm text-zinc-300">
+          <ShieldCheck className="size-5 text-pop-red shrink-0" />
+          <span>
+            Diagnostic expliqué <strong className="text-pop-off">avant intervention</strong>
+          </span>
+        </div>
       </div>
     </div>
   );

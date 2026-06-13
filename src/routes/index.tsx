@@ -1,19 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  CheckCircle2,
-  ClipboardCheck,
+  ArrowUpRight,
+  Clock,
   Gamepad2,
-  Headphones,
+  Instagram,
   MapPin,
-  MessageSquareText,
   Phone,
   ScanSearch,
-  ShieldCheck,
   Smartphone,
   Star,
   Tablet,
-  Wrench,
+  Joystick,
 } from "lucide-react";
 import heroImg from "@/assets/repair-smartphone.jpg";
 import smartphoneImg from "@/assets/repair-smartphone.jpg";
@@ -21,8 +19,8 @@ import consoleImg from "@/assets/hero-controller.jpg";
 import controllerImg from "@/assets/repair-controller.jpg";
 import tabletImg from "@/assets/repair-tablet.jpg";
 import accessoriesImg from "@/assets/accessories.jpg";
+import workshopImg from "@/assets/workshop.jpg";
 import { POPFIX } from "@/lib/popfix";
-import { TrustBar } from "@/components/TrustBar";
 import { MascotTip } from "@/components/MascotTip";
 import { SectionHeading } from "@/components/SectionHeading";
 
@@ -48,309 +46,553 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const services = [
-  {
-    icon: Smartphone,
-    title: "Smartphones",
-    img: smartphoneImg,
-    items: ["Écran cassé", "Batterie", "Port de charge", "Boutons et connectique"],
-  },
-  {
-    icon: Tablet,
-    title: "Tablettes",
-    img: tabletImg,
-    items: ["Vitre tactile", "Batterie", "Connecteur", "Problème logiciel"],
-  },
-  {
-    icon: Gamepad2,
-    title: "Consoles & manettes",
-    img: controllerImg,
-    items: ["Joystick et drift", "Surchauffe", "Boutons", "Connectique"],
-  },
-  {
-    icon: Headphones,
-    title: "Accessoires",
-    img: accessoriesImg,
-    items: ["Audio", "Câbles", "Protections", "High-tech"],
-  },
+const needs = [
+  { icon: Smartphone, label: "Smartphone", to: "/reparations" },
+  { icon: Tablet, label: "Tablette", to: "/reparations" },
+  { icon: Gamepad2, label: "Console", to: "/gaming" },
+  { icon: Joystick, label: "Manette", to: "/gaming" },
 ] as const;
 
-const steps = [
-  {
-    icon: MessageSquareText,
-    title: "Vous décrivez la panne",
-    body: "Par téléphone, Instagram, via le formulaire ou directement en boutique.",
-  },
-  {
-    icon: ScanSearch,
-    title: "L'appareil est examiné",
-    body: "Le diagnostic permet d'identifier l'origine du problème avant toute intervention.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "La solution est expliquée",
-    body: "Vous connaissez l'intervention proposée et son tarif avant de décider.",
-  },
-  {
-    icon: Wrench,
-    title: "La réparation est réalisée",
-    body: "POP'FIX intervient uniquement après votre accord.",
-  },
+const gallery = [
+  { src: workshopImg, alt: "L'atelier POP'FIX à Saint-François", span: "row-span-2" },
+  { src: controllerImg, alt: "Intérieur d'une manette en cours de réparation", span: "" },
+  { src: consoleImg, alt: "Console en cours de nettoyage", span: "" },
+  { src: tabletImg, alt: "Tablette en diagnostic", span: "" },
+  { src: accessoriesImg, alt: "Accessoires disponibles à l'atelier", span: "" },
 ] as const;
 
 function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-pop-black pt-16">
-        <div className="absolute inset-0 grain opacity-30 pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20 lg:py-24">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 text-pop-red text-xs font-bold uppercase tracking-[0.16em]">
-                <MapPin className="size-4" />
-                Atelier à Saint-François
-              </div>
+      {/* HERO */}
+      <section className="relative bg-pop-black text-pop-cream">
+        <div className="absolute inset-0">
+          <img
+            src={heroImg}
+            alt="Réparation d'un smartphone à l'atelier POP'FIX"
+            className="h-full w-full object-cover opacity-55"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-pop-black/70 via-pop-black/55 to-pop-black" />
+        </div>
 
-              <h1 className="mt-6 font-display font-black tracking-[-0.045em] leading-[0.94] text-5xl sm:text-6xl lg:text-7xl text-pop-off text-balance">
-                Réparation de smartphones, tablettes et consoles.
-              </h1>
-
-              <p className="mt-7 text-base sm:text-lg text-zinc-300 max-w-2xl leading-relaxed">
-                Écran cassé, batterie fatiguée, problème de charge ou manette défectueuse : POP'FIX
-                diagnostique votre appareil et vous explique la solution avant d'intervenir.
-              </p>
-
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Link
-                  to="/contact"
-                  className="bg-pop-red text-white px-6 py-3.5 text-sm font-bold hover:bg-pop-red-deep transition-colors inline-flex items-center gap-2"
-                >
-                  Demander un diagnostic <ArrowRight className="size-4" />
-                </Link>
-                <a
-                  href={POPFIX.phoneHref}
-                  className="bg-pop-off text-pop-black px-6 py-3.5 text-sm font-bold hover:bg-white transition-colors inline-flex items-center gap-2"
-                >
-                  <Phone className="size-4" /> Appeler POP'FIX
-                </a>
-                <a
-                  href={POPFIX.maps}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-white/15 text-pop-off px-6 py-3.5 text-sm font-bold hover:bg-white/10 transition-colors inline-flex items-center gap-2"
-                >
-                  <MapPin className="size-4" /> Itinéraire
-                </a>
-              </div>
-
-              <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-zinc-400">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-0.5 text-pop-red" aria-label="Note de 4,9 sur 5">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <Star key={index} className="size-4 fill-pop-red" />
-                    ))}
-                  </div>
-                  <strong className="text-pop-off">{POPFIX.rating.score}</strong>
-                  <span>{POPFIX.rating.count} avis Google</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 text-pop-red" />
-                  Diagnostic avant intervention
-                </div>
-              </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-32 pb-20 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-28">
+          <div className="max-w-3xl fade-up">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 backdrop-blur px-3 py-1.5 text-[11px] tracking-wide text-white/85">
+              <span className="size-1.5 rounded-full bg-pop-red animate-pulse" />
+              Atelier ouvert à Saint-François
             </div>
 
-            <div className="relative">
-              <div className="relative aspect-[4/3] overflow-hidden border border-white/10 bg-pop-zinc">
-                <img
-                  src={heroImg}
-                  alt="Diagnostic d'un smartphone à l'atelier"
-                  width={1200}
-                  height={900}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-pop-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6">
-                  <p className="text-xs uppercase tracking-[0.16em] text-white/70">
-                    Une solution locale, claire et accessible
-                  </p>
-                  <p className="mt-2 font-display font-bold text-xl sm:text-2xl text-white">
-                    Plus besoin d'aller jusqu'à Jarry pour trouver un réparateur.
-                  </p>
+            <h1 className="mt-6 font-display font-semibold leading-[1.05] tracking-[-0.025em] text-balance text-3xl sm:text-5xl lg:text-6xl text-pop-cream">
+              Votre réparateur électronique à{" "}
+              <span className="text-pop-red">Saint-François.</span>
+            </h1>
+
+            <p className="mt-5 text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed">
+              Smartphones, tablettes, consoles et manettes : POP'FIX diagnostique la panne et vous
+              explique la solution avant toute intervention.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-pop-red text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-pop-red-deep transition-colors"
+              >
+                Demander un diagnostic <ArrowRight className="size-4" />
+              </Link>
+              <a
+                href={POPFIX.phoneHref}
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white px-6 py-3 rounded-full text-sm font-semibold backdrop-blur"
+              >
+                <Phone className="size-4" /> Appeler l'atelier
+              </a>
+            </div>
+
+            <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-4 text-sm text-white/75 max-w-2xl">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="size-4 mt-0.5 text-pop-red shrink-0" />
+                <div>
+                  <dt className="text-white/55 text-xs">Adresse</dt>
+                  <dd className="text-white">
+                    {POPFIX.address.line1}
+                    <br />
+                    {POPFIX.address.city}
+                  </dd>
                 </div>
               </div>
-              <div className="absolute -right-3 -top-3 size-16 border-t-2 border-r-2 border-pop-red" />
-              <div className="absolute -left-3 -bottom-3 size-16 border-b-2 border-l-2 border-pop-red" />
-            </div>
+              <div className="flex items-start gap-2.5">
+                <Clock className="size-4 mt-0.5 text-pop-red shrink-0" />
+                <div>
+                  <dt className="text-white/55 text-xs">Aujourd'hui</dt>
+                  <dd className="text-white">9h30 — 13h · 14h — 17h</dd>
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <Star className="size-4 mt-0.5 text-pop-red fill-pop-red shrink-0" />
+                <div>
+                  <dt className="text-white/55 text-xs">Avis Google</dt>
+                  <dd className="text-white">
+                    {POPFIX.rating.score} · {POPFIX.rating.count} avis
+                  </dd>
+                </div>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
-      <TrustBar />
+      {/* NEED SELECTOR */}
+      <section className="bg-pop-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 lg:py-20">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl text-pop-black max-w-xl leading-tight">
+              Quel appareil souhaitez-vous faire réparer ?
+            </h2>
+            <p className="text-pop-warm-2 text-sm sm:text-base max-w-md">
+              Choisissez votre appareil pour voir les pannes prises en charge à l'atelier.
+            </p>
+          </div>
 
-      <section className="py-20 lg:py-28 bg-pop-black">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {needs.map((n) => (
+              <Link
+                key={n.label}
+                to={n.to}
+                className="group relative bg-white border border-black/10 rounded-2xl p-6 sm:p-8 hover:border-pop-red hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <n.icon
+                  className="size-7 sm:size-8 text-pop-warm-1 group-hover:text-pop-red transition-colors"
+                  strokeWidth={1.5}
+                />
+                <div className="mt-8 flex items-end justify-between">
+                  <span className="font-display text-lg sm:text-xl text-pop-black">{n.label}</span>
+                  <ArrowUpRight className="size-4 text-pop-warm-2 group-hover:text-pop-red group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* POURQUOI — editorial */}
+      <section className="bg-pop-paper">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:py-28 grid lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="lg:col-span-5">
+            <span className="text-pop-red text-[11px] uppercase tracking-[0.18em] font-semibold">
+              Pourquoi POP'FIX
+            </span>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl text-pop-black leading-[1.05] tracking-[-0.02em] text-balance">
+              Un atelier de proximité, un travail expliqué.
+            </h2>
+            <p className="mt-6 text-pop-warm-1 leading-relaxed">
+              POP'FIX, c'est un réparateur installé à Saint-François qui prend le temps d'examiner
+              chaque appareil et de présenter une solution claire avant d'intervenir.
+            </p>
+            <Link
+              to="/a-propos"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-pop-black hover:text-pop-red"
+            >
+              En savoir plus sur l'atelier <ArrowRight className="size-4" />
+            </Link>
+          </div>
+
+          <ol className="lg:col-span-7 space-y-8">
+            {[
+              {
+                k: "01",
+                title: "Un atelier à Saint-François",
+                body: "Plus besoin de descendre jusqu'à Jarry : votre appareil est pris en charge localement, dans une vraie boutique.",
+              },
+              {
+                k: "02",
+                title: "Un diagnostic expliqué clairement",
+                body: "L'origine de la panne vous est présentée avec des mots simples, ainsi que les options de réparation.",
+              },
+              {
+                k: "03",
+                title: "Une intervention réalisée avec votre accord",
+                body: "Rien n'est démarré sans votre validation. Vous décidez en connaissance de cause.",
+              },
+            ].map((arg) => (
+              <li
+                key={arg.k}
+                className="grid grid-cols-[auto_1fr] gap-6 pb-8 border-b border-black/10 last:border-0"
+              >
+                <span className="font-display text-pop-red text-xl">{arg.k}</span>
+                <div>
+                  <h3 className="font-display text-xl sm:text-2xl text-pop-black">{arg.title}</h3>
+                  <p className="mt-2 text-pop-warm-2 leading-relaxed">{arg.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* SERVICES — varied sizes */}
+      <section className="bg-pop-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:py-28">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <SectionHeading
               eyebrow="Services"
-              title="Les appareils pris en charge"
-              description="Du téléphone utilisé chaque jour au matériel de jeu, chaque appareil est examiné avant qu'une solution vous soit proposée."
+              title="Ce que POP'FIX prend en charge"
+              description="Le smartphone reste la prestation principale. L'atelier intervient aussi sur les tablettes, consoles, manettes et propose une sélection d'accessoires."
             />
             <Link
               to="/reparations"
-              className="inline-flex items-center gap-2 text-sm font-bold text-pop-off hover:text-pop-red transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-pop-black hover:text-pop-red"
             >
-              Voir toutes les réparations <ArrowRight className="size-4" />
+              Toutes les réparations <ArrowRight className="size-4" />
             </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {services.map((service) => (
-              <article
-                key={service.title}
-                className="group bg-pop-zinc border border-white/5 overflow-hidden hover:border-pop-red/50 transition-colors"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={service.img}
-                    alt={`Service de réparation : ${service.title}`}
-                    width={800}
-                    height={600}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-pop-zinc via-transparent to-transparent" />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3">
-                    <service.icon className="size-5 text-pop-red" />
-                    <h2 className="font-display font-bold text-xl text-pop-off">{service.title}</h2>
-                  </div>
-                  <ul className="mt-5 space-y-2">
-                    {service.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-sm text-zinc-400">
-                        <CheckCircle2 className="size-3.5 text-pop-red shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    to="/contact"
-                    className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-pop-off hover:text-pop-red transition-colors"
-                  >
-                    Demander un diagnostic <ArrowRight className="size-3.5" />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+          <div className="grid grid-cols-1 lg:grid-cols-6 auto-rows-[minmax(0,1fr)] gap-4">
+            {/* Smartphone — featured */}
+            <Link
+              to="/reparations"
+              className="group relative lg:col-span-4 lg:row-span-2 rounded-3xl overflow-hidden bg-pop-black text-white min-h-[420px]"
+            >
+              <img
+                src={smartphoneImg}
+                alt="Réparation de smartphone à l'atelier"
+                className="absolute inset-0 size-full object-cover opacity-70 group-hover:scale-[1.02] transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+              <div className="relative h-full p-8 sm:p-10 flex flex-col justify-end">
+                <span className="text-pop-red text-[11px] uppercase tracking-[0.18em] font-semibold">
+                  Prestation principale
+                </span>
+                <h3 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
+                  Smartphones : écran, batterie, charge, boutons.
+                </h3>
+                <p className="mt-4 text-white/75 max-w-lg">
+                  Diagnostic complet et réparation des pannes les plus courantes sur la plupart des
+                  modèles.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
+                  Voir les détails <ArrowRight className="size-4" />
+                </span>
+              </div>
+            </Link>
 
-      <section className="bg-pop-off text-pop-black py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="grid grid-cols-2 gap-4">
-            <img
-              src={consoleImg}
-              alt="Entretien d'une console"
-              width={900}
-              height={900}
-              loading="lazy"
-              className="w-full aspect-[4/5] object-cover"
-            />
-            <img
-              src={controllerImg}
-              alt="Réparation d'une manette"
-              width={900}
-              height={900}
-              loading="lazy"
-              className="w-full aspect-[4/5] object-cover mt-8"
-            />
-          </div>
-          <div>
-            <span className="text-pop-red text-xs font-bold uppercase tracking-[0.16em]">
-              Consoles et manettes
-            </span>
-            <h2 className="mt-5 font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-[-0.04em] leading-[0.95] text-balance">
-              Une expertise technique, au même titre que les autres appareils.
-            </h2>
-            <p className="mt-6 text-zinc-700 text-lg leading-relaxed">
-              Drift de joystick, boutons défectueux, surchauffe, poussière ou problème de
-              connectique : POP'FIX examine également les consoles et les manettes.
-            </p>
-            <ul className="mt-7 grid sm:grid-cols-2 gap-3 text-sm font-medium">
-              {[
-                "Joysticks et boutons",
-                "Nettoyage interne",
-                "Ventilation et surchauffe",
-                "Ports et connectique",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <CheckCircle2 className="size-4 text-pop-red" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {/* Tablette */}
+            <Link
+              to="/reparations"
+              className="group relative lg:col-span-2 rounded-3xl overflow-hidden bg-pop-paper border border-black/10 p-6 flex flex-col"
+            >
+              <div className="aspect-[5/3] rounded-xl overflow-hidden bg-white">
+                <img
+                  src={tabletImg}
+                  alt="Réparation de tablette"
+                  className="size-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                />
+              </div>
+              <h3 className="mt-5 font-display text-xl text-pop-black">Tablettes</h3>
+              <p className="text-sm text-pop-warm-2 mt-1">
+                Vitre tactile, batterie, connecteur de charge.
+              </p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-pop-black group-hover:text-pop-red">
+                Découvrir <ArrowRight className="size-4" />
+              </span>
+            </Link>
+
+            {/* Consoles */}
             <Link
               to="/gaming"
-              className="mt-9 inline-flex items-center gap-2 bg-pop-black text-white px-6 py-3.5 text-sm font-bold hover:bg-pop-zinc transition-colors"
+              className="group relative lg:col-span-2 rounded-3xl overflow-hidden bg-pop-black text-white p-6 flex flex-col"
             >
-              Découvrir ce service <ArrowRight className="size-4" />
+              <div className="aspect-[5/3] rounded-xl overflow-hidden">
+                <img
+                  src={consoleImg}
+                  alt="Réparation de console"
+                  className="size-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                />
+              </div>
+              <h3 className="mt-5 font-display text-xl">Consoles & manettes</h3>
+              <p className="text-sm text-white/65 mt-1">Drift de joystick, boutons, nettoyage.</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold group-hover:text-pop-red">
+                Découvrir <ArrowRight className="size-4" />
+              </span>
+            </Link>
+
+            {/* Accessoires */}
+            <Link
+              to="/accessoires"
+              className="group relative lg:col-span-3 rounded-3xl overflow-hidden bg-white border border-black/10 p-6 flex gap-5"
+            >
+              <div className="size-28 sm:size-32 rounded-xl overflow-hidden shrink-0">
+                <img
+                  src={accessoriesImg}
+                  alt="Accessoires disponibles"
+                  className="size-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <h3 className="font-display text-xl text-pop-black">Accessoires</h3>
+                <p className="text-sm text-pop-warm-2 mt-1">
+                  Câbles, protections, audio et petit high-tech.
+                </p>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-pop-black group-hover:text-pop-red">
+                  Voir la sélection <ArrowRight className="size-4" />
+                </span>
+              </div>
+            </Link>
+
+            {/* Diagnostic CTA */}
+            <Link
+              to="/contact"
+              className="group relative lg:col-span-3 rounded-3xl overflow-hidden bg-pop-red text-white p-6 flex flex-col justify-between"
+            >
+              <ScanSearch className="size-7" strokeWidth={1.5} />
+              <div>
+                <h3 className="font-display text-2xl leading-tight">
+                  Une panne précise ? Décrivez-la.
+                </h3>
+                <p className="text-sm text-white/85 mt-2">
+                  Quelques lignes suffisent pour préparer le diagnostic.
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
+                  Demander un diagnostic <ArrowRight className="size-4" />
+                </span>
+              </div>
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-pop-black">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Une démarche transparente"
-            title="Comment se passe une réparation ?"
-            description="Quatre étapes simples pour comprendre le problème et décider en connaissance de cause."
-          />
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {steps.map((step, index) => (
-              <div key={step.title} className="bg-pop-zinc border border-white/5 p-7">
-                <div className="flex items-center justify-between">
-                  <step.icon className="size-6 text-pop-red" />
-                  <span className="text-xs font-bold text-zinc-600">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <h3 className="mt-7 font-display font-bold text-xl text-pop-off">{step.title}</h3>
-                <p className="mt-3 text-sm text-zinc-400 leading-relaxed">{step.body}</p>
-              </div>
+      {/* VIE DE L'ATELIER */}
+      <section className="bg-pop-paper">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:py-28">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+            <div>
+              <span className="text-pop-red text-[11px] uppercase tracking-[0.18em] font-semibold">
+                Au quotidien
+              </span>
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl text-pop-black leading-tight max-w-xl">
+                En ce moment à l'atelier
+              </h2>
+            </div>
+            <a
+              href={POPFIX.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-pop-black hover:text-pop-red"
+            >
+              <Instagram className="size-4" /> Suivre {POPFIX.instagramHandle}
+            </a>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-3 sm:gap-4 lg:h-[520px]">
+            {gallery.map((g, i) => (
+              <figure
+                key={i}
+                className={`relative overflow-hidden rounded-2xl bg-white ${g.span} ${
+                  i === 0 ? "col-span-2 lg:col-span-2 lg:row-span-2" : ""
+                }`}
+              >
+                <img
+                  src={g.src}
+                  alt={g.alt}
+                  loading="lazy"
+                  className="size-full object-cover hover:scale-[1.03] transition-transform duration-700"
+                />
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
-      <MascotTip
-        title="Un entretien régulier aide à éviter les pannes liées à la poussière et à la surchauffe."
-        body="Retrouvez les conseils de POP'FIX pour mieux protéger vos téléphones, tablettes, consoles et accessoires au quotidien."
-      />
+      {/* FONCTIONNEMENT — 3 étapes horizontales */}
+      <section className="bg-pop-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:py-24">
+          <SectionHeading
+            eyebrow="Fonctionnement"
+            title="Trois étapes, sans surprise."
+            description="Un déroulé simple, du dépôt de l'appareil à la décision de réparer."
+          />
 
-      <section className="bg-pop-black py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 text-center">
-          <h2 className="font-display font-black tracking-[-0.035em] text-4xl sm:text-6xl text-pop-off text-balance leading-[0.95]">
-            Un appareil en panne ? <span className="text-pop-red">Parlons-en.</span>
-          </h2>
-          <p className="mt-5 text-zinc-400 max-w-2xl mx-auto">
-            Décrivez le problème ou passez directement à l'atelier de Saint-François.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <ol className="mt-12 grid md:grid-cols-3 gap-6 md:gap-8 relative">
+            <div
+              className="hidden md:block absolute left-0 right-0 top-6 h-px bg-black/10"
+              aria-hidden
+            />
+            {[
+              {
+                k: "01",
+                title: "Vous présentez l'appareil",
+                body: "En boutique, par téléphone, sur Instagram ou via le formulaire.",
+              },
+              {
+                k: "02",
+                title: "POP'FIX réalise le diagnostic",
+                body: "L'origine de la panne est identifiée, la solution vous est expliquée.",
+              },
+              {
+                k: "03",
+                title: "Vous décidez avant l'intervention",
+                body: "Aucune réparation n'est lancée sans votre accord préalable.",
+              },
+            ].map((s) => (
+              <li key={s.k} className="relative bg-pop-cream pt-0 md:pt-2 md:pr-6">
+                <span className="relative inline-flex items-center justify-center size-12 rounded-full bg-pop-black text-pop-cream font-display text-sm">
+                  {s.k}
+                </span>
+                <h3 className="mt-5 font-display text-xl text-pop-black">{s.title}</h3>
+                <p className="mt-2 text-pop-warm-2 leading-relaxed text-sm">{s.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* CONSEILS preview */}
+      <section className="bg-pop-cream pb-20 lg:pb-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+            <SectionHeading
+              eyebrow="Conseils"
+              title="Petits gestes, longue durée de vie."
+            />
             <Link
-              to="/contact"
-              className="bg-pop-red text-white px-7 py-3.5 text-sm font-bold hover:bg-pop-red-deep"
+              to="/conseils"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-pop-black hover:text-pop-red"
             >
-              Demander un diagnostic
+              Tous les conseils <ArrowRight className="size-4" />
             </Link>
-            <a
-              href={POPFIX.phoneHref}
-              className="border border-white/15 text-pop-off px-7 py-3.5 text-sm font-bold hover:bg-white/10 inline-flex items-center gap-2"
-            >
-              <Phone className="size-4" /> {POPFIX.phone}
-            </a>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                tag: "Batterie",
+                title: "Protéger la batterie de son smartphone",
+                body: "Quelques habitudes simples permettent de préserver l'autonomie de votre téléphone au quotidien.",
+              },
+              {
+                tag: "Surchauffe",
+                title: "Éviter la surchauffe en pleine journée",
+                body: "En Guadeloupe, la chaleur et le sel sollicitent particulièrement les appareils électroniques.",
+              },
+              {
+                tag: "Gaming",
+                title: "Entretenir sa console et ses manettes",
+                body: "Poussière, joysticks, ventilation : ce qu'il faut surveiller pour éviter les pannes.",
+              },
+            ].map((c) => (
+              <Link
+                key={c.title}
+                to="/conseils"
+                className="group block bg-white border border-black/10 rounded-2xl p-6 hover:border-pop-red transition-colors"
+              >
+                <span className="text-[11px] uppercase tracking-[0.18em] font-semibold text-pop-red">
+                  {c.tag}
+                </span>
+                <h3 className="mt-3 font-display text-xl text-pop-black leading-snug">
+                  {c.title}
+                </h3>
+                <p className="mt-3 text-sm text-pop-warm-2 leading-relaxed">{c.body}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-pop-black group-hover:text-pop-red">
+                  Lire le conseil <ArrowRight className="size-4" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <MascotTip />
+
+      {/* LOCALISATION */}
+      <section className="bg-pop-black text-pop-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16">
+          <div>
+            <span className="text-pop-red text-[11px] uppercase tracking-[0.18em] font-semibold">
+              Localisation
+            </span>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em]">
+              Passez à l'atelier, on est juste là.
+            </h2>
+
+            <dl className="mt-10 space-y-6 text-sm">
+              <div className="flex gap-4">
+                <MapPin className="size-5 text-pop-red mt-0.5 shrink-0" />
+                <div>
+                  <dt className="text-white/55 text-xs uppercase tracking-wider">Adresse</dt>
+                  <dd className="text-white mt-1">
+                    {POPFIX.address.line1}
+                    <br />
+                    {POPFIX.address.line2}
+                    <br />
+                    {POPFIX.address.city}, {POPFIX.address.region}
+                  </dd>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <Clock className="size-5 text-pop-red mt-0.5 shrink-0" />
+                <div>
+                  <dt className="text-white/55 text-xs uppercase tracking-wider">Horaires</dt>
+                  <dd className="text-white mt-1 space-y-0.5">
+                    {POPFIX.hours.map((h) => (
+                      <div key={h.day}>
+                        <span className="text-white/75">{h.day}</span> — {h.time}
+                      </div>
+                    ))}
+                  </dd>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <Phone className="size-5 text-pop-red mt-0.5 shrink-0" />
+                <div>
+                  <dt className="text-white/55 text-xs uppercase tracking-wider">Téléphone</dt>
+                  <dd className="text-white mt-1">
+                    <a href={POPFIX.phoneHref} className="hover:text-pop-red">
+                      {POPFIX.phone}
+                    </a>
+                  </dd>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <Instagram className="size-5 text-pop-red mt-0.5 shrink-0" />
+                <div>
+                  <dt className="text-white/55 text-xs uppercase tracking-wider">Instagram</dt>
+                  <dd className="text-white mt-1">
+                    <a
+                      href={POPFIX.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-pop-red"
+                    >
+                      {POPFIX.instagramHandle}
+                    </a>
+                  </dd>
+                </div>
+              </div>
+            </dl>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a
+                href={POPFIX.maps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-pop-red text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-pop-red-deep"
+              >
+                <MapPin className="size-4" /> Obtenir l'itinéraire
+              </a>
+              <a
+                href={POPFIX.phoneHref}
+                className="inline-flex items-center gap-2 border border-white/20 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10"
+              >
+                <Phone className="size-4" /> Appeler
+              </a>
+            </div>
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-pop-ink min-h-[360px]">
+            <iframe
+              title="Plan — POP'FIX Saint-François"
+              src="https://www.google.com/maps?q=Les+Comptoirs+de+Saint-Fran%C3%A7ois%2C+rue+de+la+R%C3%A9publique%2C+97118+Saint-Fran%C3%A7ois&output=embed"
+              loading="lazy"
+              className="absolute inset-0 size-full grayscale-[0.4] contrast-110"
+            />
           </div>
         </div>
       </section>

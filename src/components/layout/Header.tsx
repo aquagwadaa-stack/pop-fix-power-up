@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { NAV_LINKS, POPFIX } from "@/lib/popfix";
-import { PopFixLogo } from "@/components/PopFixLogo";
+import logoAsset from "@/assets/popfix-logo.png.asset.json";
 
 export function Header() {
   const [open, setOpen] = useState(false);

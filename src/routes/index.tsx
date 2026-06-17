@@ -143,8 +143,11 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="bg-pop-cream">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-pop-cream paper-grain">
+        <div className="absolute -right-24 top-20 hidden size-72 rounded-full bg-pop-red/8 blur-3xl lg:block" />
+        <div className="absolute left-0 bottom-0 hidden h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent lg:block" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:py-28">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Services"
@@ -159,15 +162,18 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((service) => (
               <Link
                 key={service.id}
                 to="/services"
                 hash={service.id}
-                className="group min-h-48 rounded-2xl border border-black/10 bg-white p-6 sm:p-7 hover:border-pop-red hover:-translate-y-0.5 transition-all"
+                className="group relative min-h-48 overflow-hidden rounded-2xl border border-black/10 bg-white/90 p-6 sm:p-7 shadow-[0_18px_45px_rgba(11,11,11,0.05)] hover:border-pop-red/50 hover:bg-white hover:-translate-y-0.5 transition-all"
               >
-                <service.icon className="size-6 text-pop-red" strokeWidth={1.5} />
+                <span className="absolute inset-x-6 top-0 h-1 rounded-b-full bg-pop-red/0 transition-colors group-hover:bg-pop-red" />
+                <div className="flex size-11 items-center justify-center rounded-full bg-pop-red/10">
+                  <service.icon className="size-5 text-pop-red" strokeWidth={1.5} />
+                </div>
                 <h3 className="mt-8 font-display text-xl font-semibold text-pop-black">
                   {service.title}
                 </h3>

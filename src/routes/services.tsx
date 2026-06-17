@@ -121,8 +121,11 @@ const repairDevices = [
 function ServicesPage() {
   return (
     <>
-      <section className="bg-pop-black text-pop-cream">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-32 pb-16 sm:pt-40 sm:pb-20">
+      <section className="relative overflow-hidden bg-pop-black text-pop-cream">
+        <div className="absolute -right-24 -top-24 size-72 rounded-full bg-pop-red/15 blur-3xl" />
+        <div className="absolute left-0 bottom-0 h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-32 pb-16 sm:pt-40 sm:pb-20">
           <SectionHeading
             eyebrow="Services"
             title="Ce que POP'FIX propose"
@@ -132,16 +135,24 @@ function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-pop-cream py-14 lg:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <section className="relative overflow-hidden bg-pop-cream py-14 lg:py-20 paper-grain">
+        <div className="absolute -left-24 top-28 hidden size-72 rounded-full bg-black/5 blur-3xl lg:block" />
+        <div className="absolute -right-24 bottom-40 hidden size-72 rounded-full bg-pop-red/8 blur-3xl lg:block" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {serviceGroups.map((service) => (
+            {serviceGroups.map((service, index) => (
               <a
                 key={service.id}
                 href={`#${service.id}`}
-                className="rounded-2xl border border-black/10 bg-white p-5 hover:border-pop-red transition-colors"
+                className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white/90 p-5 shadow-[0_16px_40px_rgba(11,11,11,0.045)] hover:border-pop-red/50 hover:bg-white transition-colors"
               >
-                <service.icon className="size-6 text-pop-red" strokeWidth={1.5} />
+                <span className="absolute right-5 top-5 font-mono text-[11px] text-pop-warm-3">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="flex size-11 items-center justify-center rounded-full bg-pop-red/10">
+                  <service.icon className="size-5 text-pop-red" strokeWidth={1.5} />
+                </div>
                 <span className="mt-5 block font-display text-lg font-semibold text-pop-black">
                   {service.title}
                 </span>
@@ -154,11 +165,14 @@ function ServicesPage() {
               <article
                 id={service.id}
                 key={service.id}
-                className="scroll-mt-24 rounded-2xl border border-black/10 bg-white p-7 sm:p-9"
+                className="relative scroll-mt-24 overflow-hidden rounded-3xl border border-blakc/10 bg-white/95 p-7 sm:p-9 shadow-[0_18px_50px_rgba(11,11,11,0.055)]"
               >
+                <span className="absolute inset-y-8 left-0 w-1 rounded-r-full bg-pop-red/80" />
                 <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-12">
                   <div>
-                    <service.icon className="size-8 text-pop-red" strokeWidth={1.5} />
+                    <div className="flex size-12 items-center justify-center rounded-full bg-pop-red/10">
+                      <service.icon className="size-6 text-pop-red" strokeWidth={1.5} />
+                    </div>
                     <h2 className="mt-6 font-display text-3xl sm:text-4xl font-semibold text-pop-black">
                       {service.title}
                     </h2>
@@ -223,7 +237,7 @@ function ServicesPage() {
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-pop-red px-6 py-3 text-sm font-semibold text-white hover:bg-pop-red-deep"
               >
-                Demander un avis <ArrowRight className="size-4" />
+                Demander un diagnostic <ArrowRight className="size-4" />
               </Link>
               <div className="flex flex-wrap gap-2">
                 {repairDevices.map((device) => (
@@ -238,7 +252,6 @@ function ServicesPage() {
               </div>
             </div>
           </div>
-        </div>
       </section>
     </>
   );

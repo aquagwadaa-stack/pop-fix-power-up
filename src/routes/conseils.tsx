@@ -79,6 +79,7 @@ function ConseilsPage() {
             eyebrow="Conseils pratiques"
             title="Mieux comprendre et protéger vos appareils"
             description="Des repères simples pour adopter les bons gestes et savoir quand demander l'avis d'un réparateur."
+            tone="light"
           />
         </div>
       </section>

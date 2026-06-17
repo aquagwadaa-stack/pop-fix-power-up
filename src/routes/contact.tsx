@@ -35,6 +35,7 @@ function ContactPage() {
             title="Contactez"
             accent="l'atelier."
             description="Décrivez votre panne, appelez POP'FIX ou passez directement à la boutique de Saint-François."
+            tone="light"
           />
         </div>
       </section>

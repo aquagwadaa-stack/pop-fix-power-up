@@ -165,7 +165,7 @@ function ServicesPage() {
               <article
                 id={service.id}
                 key={service.id}
-                className="relative scroll-mt-24 overflow-hidden rounded-3xl border border-blakc/10 bg-white/95 p-7 sm:p-9 shadow-[0_18px_50px_rgba(11,11,11,0.055)]"
+                className="relative scroll-mt-24 overflow-hidden rounded-3xl border border-black/10 bg-white/95 p-7 sm:p-9 shadow-[0_18px_50px_rgba(11,11,11,0.055)]"
               >
                 <span className="absolute inset-y-8 left-0 w-1 rounded-r-full bg-pop-red/80" />
                 <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-12">

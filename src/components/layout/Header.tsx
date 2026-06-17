@@ -34,9 +34,10 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-3 shrink-0">
-          <PopFixLogo
-            className={`text-xl transition-colors ${solid ? "" : "[&_.pop-mark]:text-white"}`}
-            solid={solid}
+          <img
+            src={logoAsset.url}
+            alt="POP'FIX"
+            className="h-10 w-auto"
           />
         </Link>
 

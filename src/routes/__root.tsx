@@ -106,6 +106,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "fr_FR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "POP'FIX — Réparation électronique à Saint-François" },
+      { name: "twitter:title", content: "POP'FIX — Réparation électronique à Saint-François" },
+      { name: "description", content: "POP-FIX Power Up creates a modern, immersive website for an electronics repair shop in Guadeloupe." },
+      { property: "og:description", content: "POP-FIX Power Up creates a modern, immersive website for an electronics repair shop in Guadeloupe." },
+      { name: "twitter:description", content: "POP-FIX Power Up creates a modern, immersive website for an electronics repair shop in Guadeloupe." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/96bb5e5f-fa4c-4bc7-8f1e-4044eb6451a1/id-preview-7180c536--5ac30f0e-204b-4314-8549-0431f4841628.lovable.app-1781394227461.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/96bb5e5f-fa4c-4bc7-8f1e-4044eb6451a1/id-preview-7180c536--5ac30f0e-204b-4314-8549-0431f4841628.lovable.app-1781394227461.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

@@ -1,16 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  Gamepad2,
   HandCoins,
   Instagram,
-  Laptop,
   MapPin,
-  Monitor,
+  Paintbrush,
   Phone,
   ShoppingBag,
-  Smartphone,
-  Tablet,
+  Wrench,
 } from "lucide-react";
 import heroImg from "@/assets/repair-smartphone.jpg";
 import workshopImg from "@/assets/workshop.jpg";
@@ -42,40 +39,22 @@ export const Route = createFileRoute("/")({
 
 const services = [
   {
-    id: "smartphones",
-    icon: Smartphone,
-    title: "Smartphones",
-    text: "Écrans, batteries, charge et connectique.",
+    id: "reparation",
+    icon: Wrench,
+    title: "Réparation",
+    text: "Smartphones, tablettes, ordinateurs, écrans, consoles et manettes.",
   },
   {
-    id: "tablettes",
-    icon: Tablet,
-    title: "Tablettes",
-    text: "Vitres tactiles, batteries et problèmes de charge.",
-  },
-  {
-    id: "ordinateurs",
-    icon: Laptop,
-    title: "Ordinateurs",
-    text: "Diagnostic, entretien, alimentation et connectique.",
-  },
-  {
-    id: "ecrans",
-    icon: Monitor,
-    title: "Écrans",
-    text: "Problèmes d'affichage, d'alimentation et de connexion.",
-  },
-  {
-    id: "consoles-manettes",
-    icon: Gamepad2,
-    title: "Consoles & manettes",
-    text: "Joysticks, boutons, nettoyage, surchauffe et personnalisation.",
-  },
-  {
-    id: "rachat-relooking",
+    id: "rachat-valorisation",
     icon: HandCoins,
     title: "Rachat & valorisation",
     text: "Estimation de consoles, manettes, téléphones et tablettes selon l'état.",
+  },
+  {
+    id: "relooking-manettes",
+    icon: Paintbrush,
+    title: "Relooking manettes",
+    text: "Personnalisation, nettoyage et remise en valeur de manettes.",
   },
   {
     id: "accessoires",
@@ -116,10 +95,10 @@ function HomePage() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                to="/reparations"
+                to="/services"
                 className="inline-flex items-center gap-2 bg-pop-red text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-pop-red-deep"
               >
-                Voir les réparations <ArrowRight className="size-4" />
+                Voir les services <ArrowRight className="size-4" />
               </Link>
               <a
                 href={POPFIX.phoneHref}
@@ -169,11 +148,11 @@ function HomePage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Services"
-              title="Ce que POP'FIX prend en charge"
-              description="Les principales catégories d'appareils, services et produits proposés à l'atelier."
+              title="Ce que POP'FIX propose"
+              description="Les grandes familles de services disponibles à l'atelier."
             />
             <Link
-              to="/reparations"
+              to="/services"
               className="inline-flex items-center gap-2 text-sm font-semibold text-pop-black hover:text-pop-red"
             >
               Voir le détail <ArrowRight className="size-4" />
@@ -184,7 +163,7 @@ function HomePage() {
             {services.map((service) => (
               <Link
                 key={service.id}
-                to="/reparations"
+                to="/services"
                 hash={service.id}
                 className="group min-h-48 rounded-2xl border border-black/10 bg-white p-6 sm:p-7 hover:border-pop-red hover:-translate-y-0.5 transition-all"
               >

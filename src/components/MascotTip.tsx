@@ -11,7 +11,7 @@ export function MascotTip({
   title?: string;
   body?: string;
   ctaLabel?: string;
-  ctaTo?: "/conseils" | "/contact" | "/reparations";
+  ctaTo?: "/conseils" | "/contact" | "/services" | "/reparations";
 }) {
   return (
     <section className="bg-pop-paper">

@@ -11,7 +11,7 @@ export function Footer() {
           <PopFixLogo className="text-3xl" solid={false} />
           <p className="mt-5 text-white/65 max-w-sm text-sm leading-relaxed">
             Atelier de réparation électronique à Saint-François. Smartphones, tablettes,
-            ordinateurs, écrans, consoles et manettes.
+            ordinateurs, écrans, consoles, manettes, rachat et valorisation.
           </p>
           <a
             href={POPFIX.instagram}
@@ -83,7 +83,7 @@ export function Footer() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-white/45">
         <p>© {new Date().getFullYear()} POP'FIX — Saint-François, Guadeloupe</p>
-        <p>On diagnostique. On explique. On répare.</p>
+        <p>On diagnostique. On explique. On répare. On valorise.</p>
       </div>
     </footer>
   );

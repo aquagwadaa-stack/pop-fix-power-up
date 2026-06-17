@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { NAV_LINKS, POPFIX } from "@/lib/popfix";
-import { PopFixLogo } from "@/components/PopFixLogo";
+import logoAsset from "@/assets/popfix-logo.png.asset.json";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -34,10 +34,13 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-3 shrink-0">
-          <PopFixLogo
-            className={`text-xl transition-colors ${solid ? "" : "[&_.pop-mark]:text-white"}`}
-            solid={solid}
-          />
+          <div className="bg-white rounded-lg px-2 py-1.5 shadow-sm">
+            <img
+              src={logoAsset.url}
+              alt="POP'FIX"
+              className="h-9 w-auto"
+            />
+          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7 text-[13px] font-medium">

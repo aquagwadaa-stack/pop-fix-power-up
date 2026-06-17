@@ -18,6 +18,8 @@ const deviceTypes = [
   "Écran",
   "Console (PS5, PS4, Switch, Xbox…)",
   "Manette",
+  "Rachat / valorisation",
+  "Relooking de manette",
   "Accessoire / Autre",
 ];
 
@@ -94,7 +96,7 @@ export function DiagnosticForm() {
       </select>
       <input
         name="brandModel"
-        placeholder="Marque et modèle (ex : iPhone, Samsung, PC, PS5)"
+        placeholder="Marque et modèle (ex : iPhone, Samsung, PC, PS5, manette PS5)"
         className={inputCls}
         maxLength={120}
       />
@@ -103,7 +105,7 @@ export function DiagnosticForm() {
         rows={5}
         required
         maxLength={1500}
-        placeholder="Décrivez la panne : symptômes, depuis quand, ce que vous avez essayé… *"
+        placeholder="Décrivez la demande : panne, état de l'appareil, relooking souhaité ou rachat à estimer… *"
         className={inputCls}
       />
       <button

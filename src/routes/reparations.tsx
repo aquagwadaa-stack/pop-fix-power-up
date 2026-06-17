@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Gamepad2,
+  HandCoins,
   Laptop,
   Monitor,
   ShoppingBag,
@@ -17,12 +18,13 @@ export const Route = createFileRoute("/reparations")({
       {
         name: "description",
         content:
-          "Smartphones, tablettes, ordinateurs, écrans, consoles et manettes pris en charge par POP'FIX à Saint-François.",
+          "Smartphones, tablettes, ordinateurs, écrans, consoles, manettes, rachat et valorisation pris en charge par POP'FIX à Saint-François.",
       },
       { property: "og:title", content: "Réparations — POP'FIX Saint-François" },
       {
         property: "og:description",
-        content: "Découvrez les appareils et les problèmes pris en charge par l'atelier POP'FIX.",
+        content:
+          "Découvrez les appareils, services et problèmes pris en charge par l'atelier POP'FIX.",
       },
       { property: "og:url", content: "/reparations" },
     ],
@@ -71,6 +73,21 @@ const categories = [
       "Nettoyage",
       "Surchauffe",
       "Ports HDMI et USB",
+      "Relooking de manettes",
+    ],
+  },
+  {
+    id: "rachat-relooking",
+    icon: HandCoins,
+    title: "Rachat & valorisation",
+    description:
+      "Estimation en boutique de consoles, manettes, téléphones et tablettes, même défectueux selon l'état et les pièces récupérables.",
+    items: [
+      "Consoles récentes",
+      "Manettes officielles",
+      "Téléphones et tablettes",
+      "Appareils fonctionnels ou HS",
+      "Personnalisation sur demande",
     ],
   },
   {
@@ -96,7 +113,7 @@ function ReparationsPage() {
           <SectionHeading
             eyebrow="Réparations et services"
             title="Les appareils pris en charge"
-            description="La faisabilité dépend du modèle, de la panne constatée et de la disponibilité des pièces."
+            description="La faisabilité dépend du modèle, de la panne constatée, de l'état de l'appareil et de la disponibilité des pièces."
             tone="light"
           />
         </div>
@@ -138,7 +155,7 @@ function ReparationsPage() {
             Votre panne n'apparaît pas dans la liste ?
           </h2>
           <p className="mt-4 text-pop-warm-2">
-            Indiquez le modèle de votre appareil et décrivez le problème rencontré.
+            Indiquez le modèle de votre appareil, l'état général et le problème rencontré.
           </p>
           <Link
             to="/contact"

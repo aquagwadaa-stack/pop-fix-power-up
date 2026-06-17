@@ -252,6 +252,7 @@ function ServicesPage() {
               </div>
             </div>
           </div>
+        </div>
       </section>
     </>
   );

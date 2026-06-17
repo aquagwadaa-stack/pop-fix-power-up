@@ -221,7 +221,7 @@ function HomePage() {
                 Atelier ouvert
               </span>
               <span className="flex items-center gap-2 text-white/70">
-                <Clock className="size-3.5" /> {POPFIX.hours.weekdaysShort}
+                <Clock className="size-3.5" /> Lun–Ven · 9h30–17h
               </span>
               <span className="flex items-center gap-2 text-white/70">
                 <MapPin className="size-3.5" /> {POPFIX.address.line1}, Saint-François
@@ -230,7 +230,7 @@ function HomePage() {
                 href={POPFIX.phoneHref}
                 className="md:ml-auto inline-flex items-center gap-2 text-pop-red hover:text-white"
               >
-                <Phone className="size-3.5" /> {POPFIX.phoneDisplay}
+                <Phone className="size-3.5" /> {POPFIX.phone}
               </a>
             </div>
           </div>

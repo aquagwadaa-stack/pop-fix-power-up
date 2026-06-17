@@ -98,7 +98,7 @@ function HomePage() {
             </div>
 
             <h1 className="mt-6 font-display font-semibold leading-[1.05] tracking-[-0.025em] text-balance text-4xl sm:text-5xl lg:text-6xl">
-              Votre réparateur électronique à <span className="text-pop-red">Saint-François.</span>
+              Votre réparateur électronique à <span className="text-pop-red">Saint-François'</span>
             </h1>
 
             <p className="mt-5 text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed">

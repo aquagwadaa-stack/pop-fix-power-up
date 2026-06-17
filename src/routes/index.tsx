@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Gamepad2,
+  HandCoins,
   Instagram,
   Laptop,
   MapPin,
@@ -24,12 +25,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Réparation de smartphones, tablettes, ordinateurs, écrans, consoles et manettes à Saint-François en Guadeloupe.",
+          "Réparation, rachat et valorisation de smartphones, tablettes, ordinateurs, écrans, consoles et manettes à Saint-François en Guadeloupe.",
       },
       { property: "og:title", content: "POP'FIX — Votre réparateur à Saint-François" },
       {
         property: "og:description",
-        content: "Un atelier local pour diagnostiquer, entretenir et réparer vos appareils.",
+        content:
+          "Un atelier local pour diagnostiquer, réparer, racheter et valoriser vos appareils.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -67,7 +69,13 @@ const services = [
     id: "consoles-manettes",
     icon: Gamepad2,
     title: "Consoles & manettes",
-    text: "Joysticks, boutons, nettoyage et surchauffe.",
+    text: "Joysticks, boutons, nettoyage, surchauffe et personnalisation.",
+  },
+  {
+    id: "rachat-relooking",
+    icon: HandCoins,
+    title: "Rachat & valorisation",
+    text: "Estimation de consoles, manettes, téléphones et tablettes selon l'état.",
   },
   {
     id: "accessoires",
@@ -98,12 +106,12 @@ function HomePage() {
             </div>
 
             <h1 className="mt-6 font-display font-semibold leading-[1.05] tracking-[-0.025em] text-balance text-4xl sm:text-5xl lg:text-6xl">
-              Votre réparateur électronique à <span className="text-pop-red">Saint-François'</span>
+              Votre réparateur électronique à <span className="text-pop-red">Saint-François.</span>
             </h1>
 
             <p className="mt-5 text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed">
-              Smartphones, tablettes, ordinateurs, écrans, consoles et manettes : POP'FIX prend en
-              charge vos appareils dans son atelier.
+              Smartphones, tablettes, ordinateurs, écrans, consoles et manettes : POP'FIX répare,
+              rachète et valorise vos appareils dans son atelier.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -162,7 +170,7 @@ function HomePage() {
             <SectionHeading
               eyebrow="Services"
               title="Ce que POP'FIX prend en charge"
-              description="Les principales catégories d'appareils et de produits proposés à l'atelier."
+              description="Les principales catégories d'appareils, services et produits proposés à l'atelier."
             />
             <Link
               to="/reparations"
